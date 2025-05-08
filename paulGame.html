@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul the Octopus Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-image: url("backGround.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            position: relative; /* For absolute positioning of back button */
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            justify-content: center;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        button img {
+            vertical-align: middle;
+            margin-right: 8px;
+        }
+
+        #teams p {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        #prediction {
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .game-container {
+            display: flex;
+            flex-direction: column;
+            background-color: white;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-width: 620px;
+            margin: 0 auto;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            background-image: url('cup.webp');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.9);
+            background-blend-mode: lighten;
+            padding: 20px;
+        }
+
+        #pauls-prediction {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        #new-teams {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .game-container.glow-green {
+            box-shadow: 0 0 15px 5px rgba(0, 255, 0, 0.8);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .game-container.glow-red {
+            box-shadow: 0 0 15px 5px rgba(255, 0, 0, 0.8);
+            transition: box-shadow 0.5s ease;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000; /* Ensure it’s above other elements */
+        }
+
+        .back-button button {
+            padding: 8px 16px;
+            font-size: 14px; /* Slightly smaller for top-right placement */
+        }
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-button">
+        <button>Back to Projects</button>
+    </a>
+
+    <div class="game-container">
+        <h1>Paul the Octopus World Cup Prediction Game</h1>
+        <hr style="width: 90%; height: 3px; background-color: blue; border: none; margin-bottom: 20px;">
+
+        <div id="teams">
+            <p id="team1"></p>
+            <p>VS</p>
+            <p id="team2"></p>
+        </div>
+
+        <div id="player-guess" style="display: none;">
+            <p>Select your predicted winner:</p>
+            <button id="guess-team1" onclick="selectTeam(team1Name)"></button>
+            <button id="guess-team2" onclick="selectTeam(team2Name)"></button>
+        </div>
+
+        <button id="check-prediction" onclick="checkPaulsPrediction()">Check Paul's Prediction</button>
+
+        <div id="pauls-prediction" style="display: none; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 200px;">
+            <p id="prediction"></p>
+            <p id="result"></p>
+            <button id="new-teams" onclick="generateNewTeams()" style="display: none;">Get New Teams</button>
+        </div>
+    </div>
+
+    <script>
+        const correctSound = new Audio("correct.mp3");
+        const wrongSound = new Audio("wrong.mp3");
+
+        const teams = [
+            { name: 'RSA', flag: 'https://flagcdn.com/w320/za.png' },
+            { name: 'Nigeria', flag: 'https://flagcdn.com/w320/ng.png' },
+            { name: 'Lesotho', flag: 'https://flagcdn.com/w320/ls.png' },
+            { name: 'Zambia', flag: 'https://flagcdn.com/w320/zm.png' }
+        ];
+
+        let playerGuess = null;
+        let paulPrediction = null;
+        let team1 = null;
+        let team2 = null;
+
+        function getRandomTeam() {
+            return teams[Math.floor(Math.random() * teams.length)];
+        }
+
+        function generateNewTeams() {
+            document.querySelector(".game-container").classList.remove("glow-green", "glow-red");
+
+            team1 = getRandomTeam();
+            team2 = getRandomTeam();
+
+            while (team1.name === team2.name) {
+                team2 = getRandomTeam();
+            }
+
+            document.getElementById("team1").innerHTML = `<img src="${team1.flag}" alt="${team1.name}" width="30"> ${team1.name}`;
+            document.getElementById("team2").innerHTML = `<img src="${team2.flag}" alt="${team2.name}" width="30"> ${team2.name}`;
+
+            const btn1 = document.getElementById("guess-team1");
+            btn1.innerHTML = `<img src="${team1.flag}" alt="${team1.name}" width="30"> ${team1.name}`;
+            btn1.onclick = () => selectTeam(team1.name);
+
+            const btn2 = document.getElementById("guess-team2");
+            btn2.innerHTML = `<img src="${team2.flag}" alt="${team2.name}" width="30"> ${team2.name}`;
+            btn2.onclick = () => selectTeam(team2.name);
+
+            document.getElementById("player-guess").style.display = "block";
+            document.getElementById("pauls-prediction").style.display = "none";
+            document.getElementById("check-prediction").style.display = "block";
+            document.getElementById("new-teams").style.display = "none";
+            document.getElementById("result").textContent = "";
+            document.getElementById("prediction").textContent = "";
+            playerGuess = null;
+            paulPrediction = null;
+        }
+
+        function selectTeam(teamName) {
+            playerGuess = teamName;
+            document.getElementById("player-guess").style.display = "none";
+            document.getElementById("check-prediction").style.display = "block";
+        }
+
+        function checkPaulsPrediction() {
+            if (!playerGuess) {
+                alert("Please select your predicted winner!");
+                return;
+            }
+
+            paulPrediction = Math.random() > 0.5 ? team1 : team2;
+
+            document.getElementById("prediction").innerHTML =
+                `Paul's Prediction: <img src="${paulPrediction.flag}" width="30"> ${paulPrediction.name}`;
+
+            if (playerGuess === paulPrediction.name) {
+                document.getElementById("result").textContent = "You guessed correct 😻";
+                document.getElementById("result").style.color = "green";
+                correctSound.play();
+                document.querySelector(".game-container").classList.add("glow-green");
+                document.querySelector(".game-container").classList.remove("glow-red");
+            } else {
+                document.getElementById("result").textContent = `Oops! You guessed wrong. Paul's prediction was: ${paulPrediction.name}`;
+                document.getElementById("result").style.color = "red";
+                wrongSound.play();
+                document.querySelector(".game-container").classList.add("glow-red");
+                document.querySelector(".game-container").classList.remove("glow-green");
+            }
+
+            document.getElementById("pauls-prediction").style.display = "block";
+            document.getElementById("check-prediction").style.display = "none";
+            document.getElementById("new-teams").style.display = "block";
+        }
+
+        generateNewTeams();
+    </script>
+</body>
+</html>

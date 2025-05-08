@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruel Chauke | About</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #e3e7eb, #f9fafc);
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1.2rem 0;
+        }
+
+        nav li {
+            margin: 0 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #2c3e50;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #e74c3c;
+        }
+
+        nav a.active {
+            color: #e74c3c;
+            border-bottom: 2px solid #e74c3c;
+        }
+
+        section {
+            padding: 6rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.8rem;
+            margin-bottom: 3rem;
+            color: #2c3e50;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background: #e74c3c;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            background: #ffffff;
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-content:hover {
+            transform: translateY(-5px);
+        }
+
+        .about-content img {
+            width: 250px;
+            height: 250px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 4px solid #e74c3c;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-text {
+            flex: 1;
+            font-size: 1.1rem;
+            color: #34495e;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 2.5rem 0;
+            margin-top: 4rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+
+            .about-content img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="container">
+        <h2>About Me</h2>
+        <div class="about-content">
+            <img src="image2.jpeg" alt="Ruel Chauke">
+            <div class="about-text">
+                <p>I'm Ruel Chauke, a dedicated software developer with expertise in creating robust and scalable applications. I specialize in Java, Kotlin, JavaScript, C+, SQL, and PL/SQL, delivering solutions that drive efficiency and innovation.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Ruel Chauke. All rights reserved.</p>
+    </footer>
+</body>
+</html>

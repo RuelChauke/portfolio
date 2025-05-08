@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paul the Lucky Octopus - Input Quiz</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: skyblue;
+            margin: 0;
+            padding: 20px;
+            position: relative; /* For absolute positioning of back button */
+        }
+
+        .quiz-container {
+            max-width: 700px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 2px outset red;
+            background-image: url('backOct.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: rgba(255, 255, 255, 0.85);
+            background-blend-mode: lighten;
+            position: relative;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        .question {
+            margin-bottom: 30px;
+        }
+
+        .question p {
+            font-weight: bold;
+            color: #000;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            margin-top: 10px;
+            border-radius: 6px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            height: 80px;
+            resize: vertical;
+        }
+
+        .feedback {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .correct {
+            color: green;
+            animation: bounce 0.6s ease;
+        }
+
+        .incorrect {
+            color: red;
+        }
+
+        .correct-answer {
+            margin-top: 5px;
+            color: #333;
+            font-style: italic;
+        }
+
+        button {
+            background-color: #3498db;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+
+        .result {
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #000;
+        }
+
+        .mute-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 8px 12px;
+            background-color: #ff6b6b;
+            color: #fff;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        @keyframes bounce {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .story-container {
+            position: relative;
+            max-width: 750px;
+            margin: 30px auto;
+            padding: 20px;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('back.jpg');
+            background-size: 100% 100%;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 3px inset red;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            font-size: 16px;
+            color: #2c3e50;
+        }
+
+        .story-container h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .story-image {
+            flex: 1 1 200px;
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        #story-text {
+            flex: 2 1 400px;
+            line-height: 1.6;
+        }
+
+        .story-container button {
+            display: block;
+            margin: 20px auto 0;
+            background-color: #27ae60;
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: background-color 0.3s ease;
+        }
+
+        .story-container button:hover {
+            background-color: #1e8449;
+        }
+
+        .highlighted {
+            background-color: yellow;
+            font-weight: bold;
+            border-radius: 4px;
+            padding: 2px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 1000; 
+        }
+
+        .back-button button {
+          padding: 8px 16px;
+          font-size: 14px; /* Slightly smaller for top-right placement */
+        }
+
+        /* .back-button button:hover {
+            background-color: #e55a5a; /* Match cta-button hover */
+        /* }  */
+    </style>
+</head>
+<body>
+    <a href="projects.html" class="back-button">
+        <button>Back to Projects</button>
+    </a>
+
+    <audio id="backgroundAudio" loop>
+        <source src="water.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="story-container">
+        <h2>📖 Paul the Octopus' Story</h2>
+        <div class="story-content">
+            <img src="book.jpg" alt="Book Illustration" class="story-image">
+            <p id="story-text">
+                Over the past few weeks, Paul the Octopus has been predicting the result of the World Cup football games.
+                He’s an amazing animal! Before each match, the sea creature’s owners have been putting some clear,
+                plastic boxes into Paul’s tank. Each box is decorated with the flag of a football team. Paul has been
+                choosing one of the boxes by crawling towards it and he has correctly guessed the winner of six football
+                games so far in the World Cup competition. Is Paul a football expert or just a very lucky octopus?
+                What do you think?
+            </p>
+        </div>
+        <button onclick="narrateStory()">▶️ Play Narration</button>
+    </div>
+
+    <div class="quiz-container">
+        <button class="mute-btn" onclick="toggleAudio()" id="muteBtn">Play Music 🔊</button>
+        <h1>Paul the Lucky Octopus - Quiz</h1>
+
+        <div class="question" id="q1-container">
+            <p>1. What does Paul predict the results of?</p>
+            <input type="text" id="q1" placeholder="Type your answer here...">
+        </div>
+
+        <div class="question" id="q2-container">
+            <p>2. Which adjectives has the author used to describe the boxes in Paul’s tank?</p>
+            <input type="text" id="q2" placeholder="Type your answer here...">
+        </div>
+
+        <div class="question" id="q3-container">
+            <p>3. Why do some people think Paul is a football expert?</p>
+            <input type="text" id="q3" placeholder="Type your answer here...">
+        </div>
+
+        <div class="question" id="q4-container">
+            <p>4. What do you think – is Paul just a lucky octopus?</p>
+            <textarea id="q4" placeholder="Type your own opinion here... (not marked)"></textarea>
+        </div>
+
+        <button onclick="submitQuiz()">Submit Quiz</button>
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function submitQuiz() {
+            const q1 = document.getElementById("q1").value;
+            const q2 = document.getElementById("q2").value;
+            const q3 = document.getElementById("q3").value;
+
+            if (q1.trim() === "" || q2.trim() === "" || q3.trim() === "") {
+                alert("Please answer all the first three questions before submitting the quiz.");
+                return;
+            }
+
+            const questions = {
+                q1: {
+                    keywords: ["football", "world cup", "matches", "games"],
+                    correctAnswer: "Paul predicts the results of World Cup football games."
+                },
+                q2: {
+                    keywords: ["clear", "plastic"],
+                    correctAnswer: "The boxes are described as clear and plastic."
+                },
+                q3: {
+                    keywords: ["guessed", "winner", "six", "correctly"],
+                    correctAnswer: "Because he correctly guessed the winner of six football games."
+                }
+            };
+
+            let score = 0;
+            let total = Object.keys(questions).length;
+
+            for (let key in questions) {
+                const input = document.getElementById(key).value.toLowerCase();
+                const container = document.getElementById(`${key}-container`);
+                const { keywords, correctAnswer } = questions[key];
+                const isCorrect = keywords.some(word => input.includes(word));
+
+                const oldFeedback = container.querySelector('.feedback');
+                if (oldFeedback) oldFeedback.remove();
+
+                const feedback = document.createElement('div');
+                feedback.classList.add('feedback');
+
+                if (isCorrect) {
+                    feedback.innerHTML = `<span class="correct">✅ Correct</span>`;
+                } else {
+                    feedback.innerHTML = `<span class="incorrect">❌ Incorrect</span><div class="correct-answer">Correct Answer: ${correctAnswer}</div>`;
+                }
+
+                container.appendChild(feedback);
+                if (isCorrect) {
+                    feedback.classList.add("correct");
+                    score++;
+                }
+            }
+
+            const q4Container = document.getElementById("q4-container");
+            const oldQ4Feedback = q4Container.querySelector('.feedback');
+            if (oldQ4Feedback) oldQ4Feedback.remove();
+
+            const q4Feedback = document.createElement('div');
+            q4Feedback.classList.add('feedback');
+            q4Feedback.innerHTML = `<div class="correct-answer">Computer: Yes – because an octopus wouldn’t really know anything about sport.</div>`;
+            q4Container.appendChild(q4Feedback);
+
+            document.getElementById("result").textContent = `You got ${score} out of ${total} questions correct! 🎉`;
+        }
+
+        function toggleAudio() {
+            const audio = document.getElementById("backgroundAudio");
+            const button = document.getElementById("muteBtn");
+
+            if (audio.paused) {
+                audio.play();
+                button.textContent = "Pause Music ⏸️";
+            } else {
+                audio.pause();
+                button.textContent = "Play Music 🔊";
+            }
+        }
+
+        function narrateStory() {
+            const storyElement = document.getElementById("story-text");
+            const story = storyElement.textContent.trim();
+
+            const words = story.match(/\S+|\s+|[^\s\w]/g);
+            if (!words) return;
+
+            storyElement.innerHTML = "";
+            words.forEach((word, index) => {
+                const span = document.createElement("span");
+                span.textContent = word;
+                span.id = `word-${index}`;
+                storyElement.appendChild(span);
+            });
+
+            const utterance = new SpeechSynthesisUtterance(story);
+            utterance.pitch = 1.1;
+            utterance.rate = 1.0;
+            utterance.volume = 1;
+
+            const voices = speechSynthesis.getVoices();
+            const womanVoice = voices.find(voice =>
+                voice.name.toLowerCase().includes("zira") ||
+                voice.name.toLowerCase().includes("samantha") ||
+                voice.name.toLowerCase().includes("google uk english female") ||
+                voice.name.toLowerCase().includes("emma") ||
+                voice.name.toLowerCase().includes("female") ||
+                voice.lang === "en-GB"
+            );
+
+            if (womanVoice) {
+                utterance.voice = womanVoice;
+            }
+
+            let currentIndex = 0;
+
+            utterance.onboundary = function (event) {
+                if (event.name === "word") {
+                    const charIndex = event.charIndex;
+
+                    let runningLength = 0;
+                    for (let i = 0; i < words.length; i++) {
+                        runningLength += words[i].length;
+                        if (charIndex < runningLength) {
+                            currentIndex = i;
+                            break;
+                        }
+                    }
+
+                    document.querySelectorAll("#story-text span").forEach(span =>
+                        span.classList.remove("highlighted")
+                    );
+
+                    const currentSpan = document.getElementById(`word-${currentIndex}`);
+                    if (currentSpan) {
+                        currentSpan.classList.add("highlighted");
+                    }
+                }
+            };
+
+            utterance.onend = function () {
+                document.querySelectorAll("#story-text span").forEach(span =>
+                    span.classList.remove("highlighted")
+                );
+            };
+
+            speechSynthesis.cancel();
+            speechSynthesis.speak(utterance);
+        }
+
+        window.speechSynthesis.onvoiceschanged = () => {
+            speechSynthesis.getVoices();
+        };
+    </script>
+</body>
+</html>

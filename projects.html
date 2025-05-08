@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruel Chauke | Projects</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        nav a.active {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 4 / 3; /* Fixed aspect ratio for consistent shape */
+            max-width: 400px;
+            width: 100%;
+            transition: transform 0.3s;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.03);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+            filter: brightness(60%); /* Dim image for overlay readability */
+        }
+
+        .portfolio-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 1; /* Always visible */
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .portfolio-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-overlay p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 3; /* Limit to 3 lines */
+            -webkit-box-orient: vertical;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .cta-button:hover {
+            background: #e55a5a;
+        }
+
+        .source-button {
+            background: #4a4a4a;
+        }
+
+        .source-button:hover {
+            background: #3a3a3a;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-item {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html">Skills</a></li>
+            <li><a href="projects.html" class="active">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="container">
+        <h2>My Projects</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <!-- <img src="projects/paul-quiz.jpg" alt="Paul The Octopus Quiz"> -->
+                <div class="portfolio-overlay">
+                    <h3>Paul The Octopus Quiz</h3>
+                    <p>A Java-based quiz game inspired by Paul the Octopus, testing football knowledge.</p>
+                    <a href="paulQuiz.html" class="cta-button">View Demo</a>
+                    <a href="https://github.com/yourusername/paul-quiz" class="cta-button source-button">View Source</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <!-- <img src="projects/paul-octopus.jpg" alt="Paul The Octopus Game"> -->
+                <div class="portfolio-overlay">
+                    <h3>Paul The Octopus Game</h3>
+                    <p>A JavaScript-based game where players guess World Cup match outcomes against Paul's predictions.</p>
+                    <a href="paulGame.html" class="cta-button">View Demo</a>
+                    <a href="https://github.com/yourusername/paul-octopus-game" class="cta-button source-button">View Source</a>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <!-- <img src="projects/dashboard.jpg" alt="Web Dashboard"> -->
+                <div class="portfolio-overlay">
+                    <h3>Web Dashboard</h3>
+                    <p>A JavaScript-driven dashboard for visualizing data with interactive charts.</p>
+                    <a href="projects/dashboard/index.html" class="cta-button">View Demo</a>
+                    <a href="https://github.com/yourusername/web-dashboard" class="cta-button source-button">View Source</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Ruel Chauke:all rights reserved.</p>
+    </footer>
+</body>
+</html>

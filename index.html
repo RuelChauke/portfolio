@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruel Chauke | Home</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: url('image1.jpeg') center/cover no-repeat fixed;
+            color: #1a1a1a;
+        }
+
+        .container {
+            background-color: #1a1a1a;
+            color: white;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background: #ff6b6b;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background: #e55a5a;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 2rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #ff6b6b;
+            transform: scale(1.2);
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 2rem;
+        }
+
+        .nav-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #1a1a1a;
+            text-decoration: none;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        nav a.active {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        .profile-container {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .profile-label {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a1a1a;
+            transition: color 0.3s;
+        }
+
+        .profile-label:hover {
+            color: #ff6b6b;
+        }
+
+        .profile-upload {
+            width: 40px;
+            height: 40px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: background 0.3s;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .profile-upload:hover {
+            background-color: #e55a5a;
+        }
+
+        .profile-upload input {
+            display: none;
+        }
+
+        .profile-upload i {
+            display: none;
+        }
+
+        section {
+            padding: 5rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 12px;
+            margin: 2rem auto;
+            max-width: 1200px;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1.2rem;
+            }
+
+            .nav-container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+                margin: 1rem 0;
+            }
+
+            .social-links a {
+                font-size: 1.5rem;
+            }
+
+            .profile-container {
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="nav-brand">RUEL CHAUKE</a>
+            <ul>
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="profile-container">
+                <span class="profile-label">Profile</span>
+                <label class="profile-upload" id="profileUpload">
+                    <input type="file" accept="image/*" id="profileInput">
+                    <i class="fas fa-user"></i>
+                </label>
+            </div>
+        </div>
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <h1>RUEL CHAUKE</h1>
+            <p>Software Developer | Building Innovative Solutions with Code</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/ruel.chauke" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="mailto:ruelchauke70@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="https://wa.me/+27717791780" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.instagram.com/ruel_chauke" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+            <a href="contact.html" class="cta-button">Get in Touch</a>
+        </div>
+    </header>
+
+    <section class="container">
+        <h2 style="color: white;">Welcome</h2>
+        <p style="text-align: center; font-size: 1.2rem;">Explore my work and discover how I can help bring your digital ideas to life.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Ruel Chauke Email:ruelchauke70@gmail.com📩 Location:Pretoria 0002📍 Cellphone: 071 779 1780📞. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const profileInput = document.getElementById('profileInput');
+        const profileUpload = document.getElementById('profileUpload');
+
+        profileInput.addEventListener('change', (event) => {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profileUpload.style.backgroundImage = `url(${e.target.result})`;
+                    profileUpload.querySelector('i').style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>

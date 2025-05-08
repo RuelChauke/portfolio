@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruel Chauke | Skills</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: #f0f2f5;
+            color: #1a1a1a;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            padding: 1rem 0;
+        }
+
+        nav li {
+            margin: 0 1.5rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #1a1a1a;
+            font-weight: 500;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff6b6b;
+        }
+
+        nav a.active {
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1a1a1a;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(2, auto);
+            gap: 1.5rem;
+            margin-top: 2rem;
+            justify-items: center;
+        }
+
+        .skill-item {
+            background: #fff;
+            color: #1a1a1a;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .skill-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .skill-item span {
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(3, auto);
+            }
+
+            .skill-item {
+                max-width: 150px;
+            }
+
+            .skill-item img {
+                width: 60px;
+                height: 60px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(6, auto);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="skills.html" class="active">Skills</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="container">
+        <h2>Skills</h2>
+        <hr style="border: 1px solid red;">
+        <div class="skills-grid">
+            <div class="skill-item">
+                <img src="java.png" alt="Java Logo">
+                <span>Java</span>
+            </div>
+            <div class="skill-item">
+                <img src="kotlin.jfif" alt="Kotlin Logo">
+                <span>Kotlin</span>
+            </div>
+            <div class="skill-item">
+                <img src="js.jfif" alt="JavaScript Logo">
+                <span>JavaScript</span>
+            </div>
+            <div class="skill-item">
+                <img src="c+.jfif" alt="C++ Logo">
+                <span>C++</span>
+            </div>
+            <div class="skill-item">
+                <img src="sql.jfif" alt="SQL Logo">
+                <span>SQL</span>
+            </div>
+            <div class="skill-item">
+                <img src="plsql.webp" alt="PL/SQL Logo">
+                <span>PL/SQL</span>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Ruel Chauke. All rights reserved.</p>
+    </footer>
+</body>
+</html>
