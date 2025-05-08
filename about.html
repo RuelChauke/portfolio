@@ -99,12 +99,17 @@
         }
 
         .about-content img {
-            width: 250px;
-            height: 250px;
-            border-radius: 12px;
+            width: 280px;
+            height: 280px;
+            border-radius: 16px;
             object-fit: cover;
             border: 4px solid #e74c3c;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .about-content img:hover {
+            transform: scale(1.03);
         }
 
         .about-text {
@@ -115,6 +120,29 @@
 
         .about-text p {
             margin-bottom: 1rem;
+        }
+
+        .cv-button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+
+        .cv-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: #e74c3c;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .cv-button:hover {
+            background: #c0392b;
         }
 
         footer {
@@ -144,8 +172,12 @@
             }
 
             .about-content img {
-                width: 200px;
-                height: 200px;
+                width: 230px;
+                height: 230px;
+            }
+
+            .cv-button-container {
+                margin-top: 1rem;
             }
         }
     </style>
@@ -166,7 +198,12 @@
         <div class="about-content">
             <img src="image2.jpeg" alt="Ruel Chauke">
             <div class="about-text">
-                <p>I'm Ruel Chauke, a dedicated software developer with expertise in creating robust and scalable applications. I specialize in Java, Kotlin, JavaScript, C+, SQL, and PL/SQL, delivering solutions that drive efficiency and innovation.</p>
+                <p>Hello, I'm Ruel Chauke, a passionate software development student at Tshwane University of Technology, where I was pursuing a Diploma in Computer Science from 2022 and enrolled my practicals at Investhood IT company as a software developer. My journey in tech is driven by a deep love for coding, where I find joy in transforming ideas into functional, innovative applications. With expertise in Java, Kotlin, JavaScript, C+, SQL, and PL/SQL, I build robust and scalable solutions that enhance efficiency and user experience.</p>
+                <p>Beyond academics, I am fueled by curiosity and a commitment to mastering new technologies. Whether it's exploring the latest frameworks or diving into emerging tools, I thrive on staying at the forefront of the tech world. My development setup, powered by a Hakimonoe 2-in-1 Wi-Fi 6 + Bluetooth 5.4 adapter, ensures seamless connectivity for hosting projects and using wireless peripherals like keyboards and headphones, creating an efficient coding environment.</p>
+                <p>When I'm not coding, you’ll find me listening to music, which inspires my creativity and keeps me focused during long debugging sessions. My patience and problem-solving mindset allow me to tackle complex challenges with enthusiasm, whether I'm working on projects like the Paul The Octopus Quiz or experimenting with new programming paradigms. I’m excited to continue growing as a developer and contributing to impactful, technology-driven solutions.</p>
+                <div class="cv-button-container">
+                    <a href="PESHYCV.pdf" class="cv-button">View My CV</a>
+                </div>
             </div>
         </div>
     </section>
